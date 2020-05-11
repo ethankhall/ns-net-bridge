@@ -172,6 +172,12 @@ fn exec_forward(args: ForwardArgs) -> Result<(), CliErrors> {
     })
 }
 
+#[cfg(target_os = "macos")]
+fn enter_network_namespace(_namespace_path: String) -> Result<(), CliErrors> {
+    Ok(())
+}
+
+#[cfg(target_os = "linux")]
 fn enter_network_namespace(namespace_path: String) -> Result<(), CliErrors> {
     use std::os::unix::io::IntoRawFd;
     use std::fs::File;
