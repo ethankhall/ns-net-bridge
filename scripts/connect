@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ $# != 2 ]]; then
+    echo "Usage: $0 <CONTAINER ID> <PORT>"
+    echo "You need to provide the CONTAINER ID, which is anything docker will reconize as a container and a PORT you want to forward."
+    exit 1
+fi
+
+CONTAINER_ID=$1
+PORT=$2
+
+export PATH="$PATH:($pwd)/target/debug"
+
+NETWORK_NAMESPACE_FILE="$( docker inspect --format '{{ .NetworkSettings.SandboxKey }}' $CONTAINER_ID )"
+sudo ns-net-bridge forward --network-namespace-file $NETWORK_NAMESPACE_FILE --namespace-address 127.0.0.1:$PORT --host-address 127.0.0.1:$PORT

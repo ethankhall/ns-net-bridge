@@ -1,0 +1,17 @@
+[package]
+name = "ns-net-bridge"
+version = "0.1.0"
+authors = ["Ethan Hall <ethan@hall.sh>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = "3.0.0-beta.1"
+tokio = { version = "0.2", features = ["full"] }
+error-enum = { git = "https://github.com/ethankhall/error-enum-generator", rev = "b5f3276a8d967fc58149d0698a342539ebcec55e" }
+loggerv = "0.7"
+log = "0.4"
+nix = "0.17"
+futures = "0.3.5"
+reqwest = {version = "0.10", features = [ "rustls-tls" ], default-features = false }
