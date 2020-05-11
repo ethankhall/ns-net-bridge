@@ -3,6 +3,6 @@ types = ["Cargo"]
 message-template = "Releasing {version}."
 
 [artifact.linux]
-paths = {inc = "linux/ns-net-bridge"}
+paths = {ns-net-bridge = "linux/ns-net-bridge"}
 compress = { name = "ns-net-bridge-x86_64.tar.gz", format = "tgz" }
 target = "GitHub"
