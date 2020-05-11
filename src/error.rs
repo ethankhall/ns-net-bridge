@@ -1,10 +1,10 @@
-use error_enum::{ErrorEnum, ErrorContainer, PrettyError};
+use error_enum::{ErrorContainer, ErrorEnum, PrettyError};
 
 #[derive(Debug, PartialEq, Eq, ErrorContainer)]
 pub enum CliErrors {
     Namespace(NamespaceErrors),
     Tokio(TokioErrors),
-    Unknown(UnknownErrors)
+    Unknown(UnknownErrors),
 }
 
 #[derive(Debug, PartialEq, Eq, ErrorEnum)]
@@ -18,14 +18,14 @@ pub enum UnknownErrors {
 #[error_enum(prefix = "TOKIO")]
 pub enum TokioErrors {
     #[error_enum(description = "Tokio Runtime Error")]
-    Error(String)
+    Error(String),
 }
 
 #[derive(Debug, PartialEq, Eq, ErrorEnum)]
 #[error_enum(prefix = "NS")]
 pub enum NamespaceErrors {
     #[error_enum(description = "Unable to open network namespace")]
-    UnableToOpenNamepace(String)
+    UnableToOpenNamepace(String),
 }
 
 impl From<tokio::io::Error> for CliErrors {
