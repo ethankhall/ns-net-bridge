@@ -55,10 +55,6 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/download-artifact@v1
         with:
-          name: mac-artifacts
-          path: artifacts/mac
-      - uses: actions/download-artifact@v1
-        with:
           name: linux-artifacts
           path: artifacts/linux
       - name: Create release
