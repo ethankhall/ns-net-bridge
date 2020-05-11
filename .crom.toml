@@ -1,0 +1,8 @@
+pattern = 'v0.1.%d'
+types = ["Cargo"]
+message-template = "Releasing {version}."
+
+[artifact.linux]
+paths = {inc = "linux/pagerduty-cli"}
+compress = { name = "inc-linux-x86_64.tar.gz", format = "tgz" }
+target = "GitHub"
