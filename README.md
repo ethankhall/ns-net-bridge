@@ -12,3 +12,16 @@ This tool makes it so that you can have one tool that connects a port inside a d
 ## How does this work?
 
 There are two thread pools. The `host` and the `namespace`. Any incoming request is processed by the `host` threadpool. When a connection is made, the tool creates a new connection on the `namespace` threadpool to the designated target. The tool will then shuffel data transparently container was running on the hosts IP address.
+
+## How do I use it?
+
+Assuming both `ns-net-bridge` and the `connect` script are on the `PATH` on the TARGET machine.
+
+```
+export PORT=8080
+ssh -L $PORT:127.0.0.1:$PORT $TARGET
+docker ps # find the docker container id
+connect $DOCKER_ID $PORT
+```
+
+And you will now be able to access something on port 8080 from your local machine and have it routed to the docker container.
